@@ -15,6 +15,19 @@ const PORT = process.env.PORT || 3000;
 // Middleware untuk mem-parsing body request berformat JSON
 app.use(express.json());
 
+// Middleware CORS Kustom untuk mengizinkan semua origin (Mencegah CORS Block di Vercel & Lokal)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  // Tangani preflight request OPTIONS secara cepat
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // Endpoint untuk menyajikan spesifikasi swagger.json murni
 app.get('/api/docs-json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');

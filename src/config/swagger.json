@@ -7,8 +7,8 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000",
-      "description": "Server Pengembangan Lokal"
+      "url": "/",
+      "description": "Server Otomatis (Lokal & Vercel)"
     }
   ],
   "paths": {
