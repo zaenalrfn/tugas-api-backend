@@ -20,11 +20,11 @@ app.use(express.json());
 // Integrasi Swagger UI untuk dokumentasi REST API interaktif
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Route beranda (untuk cek status server, opsional)
+// Route beranda (untuk cek status server & dokumentasi)
 app.get('/', (req, res) => {
   res.status(200).json({
     success: true,
-    message: 'Welcome to Tugas REST API Express + Supabase & JWT'
+    message: 'Welcome to REST API Express.js + Supabase & JWT. Dokumentasi API interaktif tersedia di /api-docs'
   });
 });
 

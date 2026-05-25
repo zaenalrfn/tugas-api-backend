@@ -90,6 +90,11 @@ Buat SQL untuk 2 tabel berikut di Supabase:
   - Buat JWT token dengan payload { id, email }
   - Response: { message, token }
 
+- POST /api/auth/logout (WAJIB pakai JWT token)
+  - Header: Authorization: Bearer <token>
+  - Deskripsi: Melakukan formalisasi penghapusan sesi autentikasi pada server.
+  - Response: { message }
+
 ### Articles (WAJIB pakai JWT token)
 
 Semua route articles harus dilindungi middleware JWT.

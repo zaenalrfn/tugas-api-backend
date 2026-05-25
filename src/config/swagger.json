@@ -139,6 +139,56 @@
         }
       }
     },
+    "/api/auth/logout": {
+      "post": {
+        "summary": "Logout Pengguna",
+        "description": "Menyelesaikan sesi autentikasi. Diperlukan Bearer Token JWT di header Authorization untuk menyelesaikan logout secara formal di server.",
+        "tags": ["Authentication"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Logout berhasil",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Logout berhasil"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Token tidak disediakan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden - Token tidak valid atau kedaluwarsa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/articles": {
       "get": {
         "summary": "Mendapatkan Semua Artikel",

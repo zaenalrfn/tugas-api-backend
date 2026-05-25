@@ -41,20 +41,27 @@ tugas-api-bakcend/
 ## ⚙️ Cara Instalasi & Menjalankan Project
 
 ### 1. Klon / Download Repositori Ini
+
 Pastikan Anda sudah berada di dalam folder project ini di terminal Anda.
 
 ### 2. Install Dependency
+
 Jalankan perintah berikut untuk mengunduh modul-modul Node.js yang diperlukan:
+
 ```bash
 npm install
 ```
 
 ### 3. Konfigurasi Variabel Lingkungan (`.env`)
+
 Salin file `.env.example` menjadi `.env` lalu sesuaikan isinya:
+
 ```bash
 cp .env.example .env
 ```
+
 Isi variabel berikut di file `.env`:
+
 ```env
 PORT=3000
 SUPABASE_URL=https://fnlsasxkfsxnxsnubzti.supabase.co
@@ -64,22 +71,29 @@ JWT_EXPIRES_IN=1d
 ```
 
 ### 4. Setup Database di Supabase
+
 1. Masuk ke dashboard project Supabase Anda di **[Supabase Console](https://supabase.com/)**.
 2. Pergi ke **SQL Editor**.
 3. Salin kode SQL yang ada di file [database.sql](file:///e:/KULIAHKU/SEMESTER%206/PENGEMBANGAN%20APLIKASI%20BACKEND/tugas-api-bakcend/database.sql) dan jalankan (**Run**).
 
 ### 5. Jalankan Server Lokal
+
 Untuk mode pengembangan dengan auto-reload (menggunakan nodemon):
+
 ```bash
 npm run dev
 ```
+
 Untuk menjalankan secara normal:
+
 ```bash
 npm start
 ```
+
 Server akan aktif di: `http://localhost:3000`
 
 ### 6. Akses Dokumentasi Swagger UI (Interaktif)
+
 Setelah server berjalan, buka browser Anda dan akses:
 👉 **[http://localhost:3000/api-docs](http://localhost:3000/api-docs)**
 
@@ -92,7 +106,9 @@ Di halaman ini, Anda dapat langsung mencoba (Try it out) endpoint registrasi, lo
 ### 🔑 1. Autentikasi (Bebas Akses)
 
 #### A. Registrasi Pengguna Baru (`POST /api/auth/register`)
+
 Mendaftarkan akun baru ke sistem.
+
 - **Request Body (JSON):**
   ```json
   {
@@ -115,7 +131,9 @@ Mendaftarkan akun baru ke sistem.
   ```
 
 #### B. Login Pengguna (`POST /api/auth/login`)
+
 Memverifikasi akun dan mendapatkan Token JWT.
+
 - **Request Body (JSON):**
   ```json
   {
@@ -131,13 +149,25 @@ Memverifikasi akun dan mendapatkan Token JWT.
   }
   ```
 
+#### C. Logout Pengguna (`POST /api/auth/logout`)
+Melakukan formalisasi penyelesaian sesi pengguna pada server.
+- **Header:** `Authorization: Bearer <token>`
+- **Response Contoh (200 OK):**
+  ```json
+  {
+    "message": "Logout berhasil"
+  }
+  ```
+
 ---
 
 ### 📝 2. Artikel (Wajib Melampirkan Bearer Token JWT)
+
 Setiap request ke rute artikel harus menyertakan header berikut:
 `Authorization: Bearer <TOKEN_JWT_HASIL_LOGIN>`
 
-#### A. Membuat Artikel Baru (`POST /api/articles`) *(Tambahan)*
+#### A. Membuat Artikel Baru (`POST /api/articles`) _(Tambahan)_
+
 - **Header:** `Authorization: Bearer <token>`
 - **Request Body (JSON):**
   ```json
@@ -161,6 +191,7 @@ Setiap request ke rute artikel harus menyertakan header berikut:
   ```
 
 #### B. Mendapatkan Semua Artikel (`GET /api/articles`)
+
 - **Header:** `Authorization: Bearer <token>`
 - **Response Contoh (200 OK):**
   ```json
@@ -179,6 +210,7 @@ Setiap request ke rute artikel harus menyertakan header berikut:
   ```
 
 #### C. Mendapatkan Artikel Berdasarkan ID (`GET /api/articles/:id`)
+
 - **Header:** `Authorization: Bearer <token>`
 - **Response Contoh (200 OK):**
   ```json
@@ -197,15 +229,21 @@ Setiap request ke rute artikel harus menyertakan header berikut:
 ---
 
 ## 🚫 Penanganan Error (Error Handling)
+
 Jika terjadi error (misalnya token tidak valid, data tidak ditemukan, dll), sistem akan mengembalikan status code HTTP yang sesuai dengan format respon JSON berikut:
+
 ```json
 {
   "success": false,
   "message": "Pesan deskripsi kesalahan"
 }
 ```
+
 **Contoh HTTP Status:**
+
 - `401 Unauthorized`: Token tidak disediakan atau format salah.
 - `403 Forbidden`: Token telah kedaluwarsa atau tidak valid.
 - `404 Not Found`: Halaman atau data artikel tidak ditemukan.
 - `500 Internal Server Error`: Masalah koneksi basis data atau kendala internal lainnya.
+
+---

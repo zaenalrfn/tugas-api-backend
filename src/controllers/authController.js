@@ -125,3 +125,19 @@ exports.login = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * Logout User
+ * POST /api/auth/logout
+ */
+exports.logout = async (req, res, next) => {
+  try {
+    // Pada arsitektur JWT stateless, logout ditangani di client dengan menghapus token.
+    // Endpoint ini mendemonstrasikan penyelesaian logout formal.
+    return res.status(200).json({
+      message: 'Logout berhasil'
+    });
+  } catch (error) {
+    next(error);
+  }
+};
