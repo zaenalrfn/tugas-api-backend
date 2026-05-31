@@ -63,18 +63,13 @@ cp .env.example .env
 Isi variabel berikut di file `.env`:
 
 ```env
-PORT=3000
-SUPABASE_URL=https://fnlsasxkfsxnxsnubzti.supabase.co
-SUPABASE_KEY=sb_publishable_WIhRiT2--6LNixwMaeAXig_pukqkmny
-JWT_SECRET=v8mFH4QKbr6SxMUP_super_secret_jwt_key
-JWT_EXPIRES_IN=1d
+PORT=
+SUPABASE_URL=
+SUPABASE_KEY=
+JWT_SECRET=
+JWT_EXPIRES_IN=
 ```
 
-### 4. Setup Database di Supabase
-
-1. Masuk ke dashboard project Supabase Anda di **[Supabase Console](https://supabase.com/)**.
-2. Pergi ke **SQL Editor**.
-3. Salin kode SQL yang ada di file [database.sql](file:///e:/KULIAHKU/SEMESTER%206/PENGEMBANGAN%20APLIKASI%20BACKEND/tugas-api-bakcend/database.sql) dan jalankan (**Run**).
 
 ### 5. Jalankan Server Lokal
 
